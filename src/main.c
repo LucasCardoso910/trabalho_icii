@@ -1,5 +1,4 @@
-#include "sorting/insert_sort.h"
-
+#include "sorting/selection_sort.h"
 int main() {
     char** array;
     int size;
@@ -14,7 +13,7 @@ int main() {
         scanf("%s", array[i]);
     }
     
-    array = insert_sort(array, &size);
+    array = selection_sort(array, size);
     print(array, size);
 
     return 0;

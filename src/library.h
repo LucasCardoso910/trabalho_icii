@@ -4,6 +4,11 @@
 
 #define STRING_SIZE 12
 
+char** right_shift(char** array, int *size);
+char** left_shift(char** array, int *size);
+int compare(char *str1, char *str2);
+void swap(char* obj1, char *obj2);
+void move(char *dest, char *source);
 void print(char **array, int size);
 
 int count_compare = 0;  // Variável para contar número de comparações
@@ -39,13 +44,21 @@ char** left_shift(char** array, int *size) {
     return array;
 }
 
-int compare(char *str1, char *str2){
+int compare(char *str1, char *str2) {
     count_compare++;
 
     return strcmp(str1,str2);
 }
 
-void move(char *dest, char *source){
+void swap(char * obj1, char *obj2) {
+    char var[STRING_SIZE];
+
+    move(var, obj1);
+    move(obj1, obj2);
+    move(obj2, var);
+}
+
+void move(char *dest, char *source) {
     count_moves++;
 
     strcpy(dest,source);

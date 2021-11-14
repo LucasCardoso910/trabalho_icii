@@ -3,6 +3,8 @@
 #include <stdlib.h>
 
 #define STRING_SIZE 12
+#define TRUE 1
+#define FALSE 0
 
 char** right_shift(char** array, int *size);
 char** left_shift(char** array, int *size);

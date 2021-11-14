@@ -1,4 +1,5 @@
-#include "sorting/selection_sort.h"
+#include "sorting/bubble_sort.h"
+
 int main() {
     char** array;
     int size;
@@ -13,7 +14,7 @@ int main() {
         scanf("%s", array[i]);
     }
     
-    array = selection_sort(array, size);
+    array = bubble_sort(array, size);
     print(array, size);
 
     return 0;

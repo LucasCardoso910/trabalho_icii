@@ -14,7 +14,7 @@ int main() {
         scanf("%s", array[i]);
     }
     
-    array = bubble_sort(array, size);
+    array = sort(array, size);
     print(array, size);
 
     return 0;

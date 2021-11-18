@@ -1,6 +1,4 @@
-#include "../library.h"
-
-char** bubble_sort(char **array, int size){
+char* bubble_sort(char **array, int size) {
     int changed;
     int count = 1;
 
@@ -17,6 +15,5 @@ char** bubble_sort(char **array, int size){
         count++;
     } while(changed);
 
-    return array;
+    return "bubble_sort";
 }
-

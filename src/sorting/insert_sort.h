@@ -1,9 +1,7 @@
-#include "../library.h"
-
-char** insert_sort(char** array, int size) {
+char* insert_sort(char** array, int size) {    
     array = right_shift(array, &size);
 
-    for (int i = 1; i < size; i++) {
+    for (int i = 2; i < size; i++) {
         char sentinel[STRING_SIZE];
         int j;
         
@@ -20,5 +18,5 @@ char** insert_sort(char** array, int size) {
 
     array = left_shift(array, &size);
 
-    return array;
+    return "insert_sort";
 }

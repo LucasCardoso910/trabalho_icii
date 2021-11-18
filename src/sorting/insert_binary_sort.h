@@ -1,13 +1,11 @@
-#include "../library.h"
-
-char** insert_binary_sort(char **array,int size) {
+char* insert_binary_sort(char **array,int size) {
     char aux[STRING_SIZE];
     int left;
     int right;
     int medium;
     int j;
 
-    for(int i=1; i<size; i++){
+    for (int i = 1; i < size; i++){
         strcpy(aux, array[i]);
         left = 0;
         right = i;
@@ -31,5 +29,5 @@ char** insert_binary_sort(char **array,int size) {
         move(array[right], aux);
     }
 
-    return array;
+    return "insert_binary_sort";
 }

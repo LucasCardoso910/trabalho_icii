@@ -24,11 +24,15 @@ for nome_do_arquivo in csv_files:
             line = line.split(",")
 
             arquivo.append(line[0])
-            comparacoes.append(line[1])
-            movimentos.append(line[2])
+            comparacoes.append(int(line[1]))
+            movimentos.append(int(line[2]))
 
-        fig = plt.figure()
+        #fig = plt.figure()
+        fig, ab = plt.subplots()
+        ab.ticklabel_format(style='plain') # para não ficar em notação científica
+        ax = plt.gca()
         plt.bar(arquivo, comparacoes)
+        ax.set_ylim(0,1.01 * max(comparacoes)) # para definir o limite no eixo y
         plt.title("Gráfico do número de comparações pelo arquivo - " + name)
         plt.xlabel("Arquivo escolhido")
         plt.ylabel("Número de comparações")
@@ -36,8 +40,12 @@ for nome_do_arquivo in csv_files:
         # plt.show()
         plt.savefig("graphs/" + name + "-comparacoes.png", format="png", dpi=fig.dpi)
 
-        fig = plt.figure()
+        #fig = plt.figure()
+        fig, ab = plt.subplots()
+        ab.ticklabel_format(style='plain')
+        ax = plt.gca()
         plt.bar(arquivo, movimentos)
+        ax.set_ylim(0,1.01 * max(movimentos))
         plt.title("Gráfico do número de movimentações pelo arquivo - " + name)
         plt.xlabel("Arquivo escolhido")
         plt.ylabel("Número de movimentações")

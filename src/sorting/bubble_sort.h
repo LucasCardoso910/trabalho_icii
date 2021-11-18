@@ -1,6 +1,6 @@
 #include "../library.h"
 
-char** sort(char **array, int size){
+char** bubble_sort(char **array, int size){
     int changed;
 
     do{

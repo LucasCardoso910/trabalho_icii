@@ -1,6 +1,6 @@
 #include "../library.h"
 
-char** sort(char** array, int *size) {
+char** insert_sort(char** array, int *size) {
     array = right_shift(array, size);
 
     for (int i = 1; i < (*size); i++) {

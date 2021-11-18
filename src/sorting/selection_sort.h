@@ -1,6 +1,6 @@
 #include "../library.h"
 
-char** sort(char** array, int size) {
+char** selection_sort(char** array, int size) {
     
     for (int i=0; i<size-1; i++){
         int minor_index = i;

@@ -1,0 +1,5 @@
+.gitignore
+*.out
+.vscode
+test.c
+src/main_testes.c

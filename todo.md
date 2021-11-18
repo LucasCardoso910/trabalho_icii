@@ -6,3 +6,9 @@
 * Podemos implementar variações diferentes dos algoritmos passados em aula?
 
 ## TODO:
+* Implementar heapsort
+* Implementar mergesort
+* Implementar quicksort
+* Criar um arquivo main.c que gera os dados de comparações de todos os métodos
+* Gerar código em Python que gera os gráficos
+* Implementar aplicativo de busca

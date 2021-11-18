@@ -36,6 +36,7 @@ for nome_do_arquivo in csv_files:
         # plt.show()
         plt.savefig("graphs/" + name + "-comparacoes.png", format="png", dpi=fig.dpi)
 
+        fig = plt.figure()
         plt.bar(arquivo, movimentos)
         plt.title("Gráfico do número de movimentações pelo arquivo - " + name)
         plt.xlabel("Arquivo escolhido")

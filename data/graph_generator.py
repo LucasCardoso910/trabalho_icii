@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import os
 
 ''' 
 mes_1, comparacoes, movimentos
@@ -7,10 +8,13 @@ mes_3, comparacoes, movimentos
 mes_4, comparacoes, movimentos
 mes_5, comparacoes, movimentos
 '''
-for i in range(0,5):
-    nome_do_arquivo = 
 
-    with open(nome_do_arquivo) as f:
+csv_files = os.listdir("files")
+
+for nome_do_arquivo in csv_files:
+    name, extension = nome_do_arquivo.split(".")
+
+    with open("files/" + nome_do_arquivo) as f:
         arquivo = []
         comparacoes = []
         movimentos = []
@@ -21,19 +25,21 @@ for i in range(0,5):
 
             arquivo.append(line[0])
             comparacoes.append(line[1])
-            movimentacoes(line[2])
+            movimentos.append(line[2])
 
-
-        plt.bar(arquivo,comparacoes)
-        plt.title("Gráfico do número de comparações pelo arquivo")
+        fig = plt.figure()
+        plt.bar(arquivo, comparacoes)
+        plt.title("Gráfico do número de comparações pelo arquivo - " + name)
         plt.xlabel("Arquivo escolhido")
-        plt.ylabel("Número dd comparações")
+        plt.ylabel("Número de comparações")
         plt.grid()
-        plt.show()
+        # plt.show()
+        plt.savefig("graphs/" + name + "-comparacoes.png", format="png", dpi=fig.dpi)
 
-        plt.bar(arquivo,movimentos)
-        plt.title("Gráfico do número de movimentações pelo arquivo")
+        plt.bar(arquivo, movimentos)
+        plt.title("Gráfico do número de movimentações pelo arquivo - " + name)
         plt.xlabel("Arquivo escolhido")
-        plt.ylabel("Número dd movimentações")
+        plt.ylabel("Número de movimentações")
         plt.grid()
-        plt.show()
+        # plt.show()
+        plt.savefig("graphs/" + name + "-movimentacoes.png", format="png", dpi=fig.dpi)

@@ -1,6 +1,6 @@
 #include "../library.h"
 
-char** sort(char **array, int size){
+char** bubble_sort(char **array, int size){
     int changed;
     int count = 1;
 
@@ -19,3 +19,4 @@ char** sort(char **array, int size){
 
     return array;
 }
+

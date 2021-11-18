@@ -1,6 +1,6 @@
-#include "../library.h"
+// #include "../library.h"
 
-char** insert_binary_sort(char **array,int size) {
+char* insert_binary_sort(char **array,int size) {
     char aux[STRING_SIZE];
     int left;
     int right;
@@ -31,5 +31,5 @@ char** insert_binary_sort(char **array,int size) {
         move(array[right], aux);
     }
 
-    return array;
+    return "insert_binary_sort";
 }

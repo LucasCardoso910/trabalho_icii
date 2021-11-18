@@ -85,11 +85,17 @@ char** read_file(char* filename, int *size) {
     return array;
 }
 
-void write_output_file(char month[MONTH_STR_SIZE], char** content, int size) {
+void write_output_file(
+    char func_name[FUNC_NAME_SIZE], 
+    char month[MONTH_STR_SIZE], 
+    char** content, 
+    int size
+    ) {
+    
     char filename[FILENAME_SIZE];
     FILE* file;
 
-    sprintf(filename, "output/%s.txt", month);
+    sprintf(filename, "output/%s-%s.txt", month, func_name);
     file = fopen(filename, "w");
 
     for (int i = 0; i < size; i++) {
@@ -113,6 +119,6 @@ void sort(char* sort(char**, int), char** array, int *size, char* month) {
     char function_name[FUNC_NAME_SIZE];
 
     strcpy(function_name, sort(array, *size));
-    write_output_file(month, array, *size);
+    write_output_file(function_name, month, array, *size);
     write_data_file(function_name, month);
 }

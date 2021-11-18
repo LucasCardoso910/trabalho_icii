@@ -1,0 +1,14 @@
+#!/bin/bash
+. bash/compare_files.sh
+
+rm data/files/* 2> /dev/null
+gcc src/main.c -o main.out
+./main.out
+
+if [[ compare_files ]]; then
+    cd data
+    python3 graph_generator.py
+    cd ..
+else
+    printf "Not all files in the same month are the same!"
+fi

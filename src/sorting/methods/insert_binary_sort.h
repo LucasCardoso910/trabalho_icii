@@ -1,21 +1,21 @@
-char* insert_binary_sort(char **array,int size) {
+char *insert_binary_sort(char **array, int size) {
     char aux[STRING_SIZE];
     int left;
     int right;
     int medium;
     int j;
 
-    for (int i = 1; i < size; i++){
-        strcpy(aux, array[i]);
+    for (int i = 1; i < size; i++) {
+        move(aux, array[i]); // strcpy?
         left = 0;
         right = i;
 
-        while(left < right){
+        while (left < right) {
             medium = (left + right) / 2;
 
-            if (compare(array[medium],aux) <= 0){
+            if (compare(array[medium], aux) <= 0) {
                 left = medium + 1;
-            }else{
+            } else {
                 right = medium;
             }
         }

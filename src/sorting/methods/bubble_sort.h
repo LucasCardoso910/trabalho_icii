@@ -1,11 +1,10 @@
-char* bubble_sort(char **array, int size){
+char *bubble_sort(char **array, int size) {
+    for (int i = 1; i < size; i++) {
 
-    for(int i = 1;i<size; i++){
+        for (int j = size - 1; j >= i; j--) {
 
-        for(int j=size-1; j>=i; j--){
-
-            if(compare(array[j-1],array[j]) > 0){
-                swap(array[j-1],array[j]);
+            if (compare(array[j - 1], array[j]) > 0) {
+                swap(array[j - 1], array[j]);
             }
         }
     }
@@ -13,14 +12,14 @@ char* bubble_sort(char **array, int size){
     return "bubble_sort";
 }
 
-char* improved_bubble_sort(char **array, int size) {
+char *improved_bubble_sort(char **array, int size) {
     int changed;
     int count = 1;
 
-    do{
+    do {
         changed = FALSE;
 
-        for(int i = 0; i < size - count; i++) {
+        for (int i = 0; i < size - count; i++) {
             if (compare(array[i], array[i + 1]) > 0) {
                 swap(array[i], array[i + 1]);
                 changed = TRUE;
@@ -28,21 +27,21 @@ char* improved_bubble_sort(char **array, int size) {
         }
 
         count++;
-    } while(changed);
+    } while (changed);
 
     return "improved_bubble_sort";
 }
 
-char* shake_sort(char **array, int size){
+char *shake_sort(char **array, int size) {
     int left = 1;
     int right = size - 1;
     int k = size - 1;
 
-    do{
-        
-        for(int j = right; j>=left; j--){
-            if(compare(array[j-1],array[j]) > 0){
-                swap(array[j-1], array[j]);
+    do {
+
+        for (int j = right; j >= left; j--) {
+            if (compare(array[j - 1], array[j]) > 0) {
+                swap(array[j - 1], array[j]);
                 k = j;
             }
         }
@@ -56,9 +55,8 @@ char* shake_sort(char **array, int size){
             }
         }
 
-
         right = k - 1;
-    }while(left <= right);
+    } while (left <= right);
 
     return "shake_sort";
 }

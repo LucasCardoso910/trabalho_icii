@@ -1,4 +1,5 @@
-#include "sorting/bubble_sort.h"
+#include "library.h"
+#include "algorithms/bubble_sort.h"
 
 int main() {
     char** array;
@@ -12,7 +13,7 @@ int main() {
         scanf("%s", array[i]);
     }
     
-    array = sort(array, size);
+    shake_sort(array, size);
     print(array, size);
 
     return 0;

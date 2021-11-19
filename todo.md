@@ -1,15 +1,16 @@
-## Dúvidas para tirar com o Renato:
-
-* Podemos mudar apenas o primeiro termo no righ_shift ?
-* Right shift e left shift contabilizam como movimentações?
-* Qual método da bolha implementar? Bubblesort ou shakesort ou tanto faz?
-* Podemos implementar variações diferentes dos algoritmos passados em aula?
-
 ## TODO:
-* Implementar heapsort
+* ~~Implementar heapsort~~
+* ~~Implementar quicksort~~
+* ~~Criar um arquivo main.c que gera os dados de comparações de todos os métodos~~
+* ~~Gerar código em Python que gera os gráficos~~
+* ~~Implementar Bubblesort original~~
 * Implementar mergesort
-* Implementar quicksort
-* Criar um arquivo main.c que gera os dados de comparações de todos os métodos
-* Gerar código em Python que gera os gráficos
+* Melhorar visualização dos gráficos
+* Corrigir script em Bash de comparação de arquivos
 * Implementar aplicativo de busca
+* Fazer anotações nos pontos dos gráficos
+* Escrever o artigo do trabalho
 
+## TODO (secundário):
+* ~~Implementar Shakesort~~
+* Achar regressão dos gráficos

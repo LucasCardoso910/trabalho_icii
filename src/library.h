@@ -72,3 +72,10 @@ void print(char **array, int size) {
     }
     printf("\n");
 }
+
+void print_subarray(char **array, int left, int right) {
+    for (int i = left; i < right; i++) {
+        printf("%s\t", array[i]);
+    }
+    printf("\n");
+}

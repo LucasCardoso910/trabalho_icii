@@ -1,14 +1,32 @@
 #!/bin/bash
+. bash/variables.sh
 . bash/compare_files.sh
+. bash/algorithm_translate.sh
 
 rm data/files/* 2> /dev/null
+
+printf '%s\n' 'Compiling C program'
 gcc src/main.c -o main.out
+
+printf '%s\n' 'Executing program'
 ./main.out
 
-if [[ compare_files ]]; then
+check=$(compare)
+
+if [[ "$check" == '0' ]]; then
+    printf '%s\n' 'Generating comparisons and moves graphs'
     cd data
     python3 graph_generator.py
     cd ..
 else
-    printf "Not all files in the same month are the same!"
+    IFS=' '
+    info=($check)
+
+    month=${info[0]}
+    alg1=$(translate ${info[1]})
+    alg2=$(translate ${info[2]})
+
+    printf '%s\n' "Month $month has divergences between algorithms $alg1 and $alg2"
 fi
+
+printf '%s\n' 'Done!'

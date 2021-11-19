@@ -1,0 +1,22 @@
+function format_files()
+{
+  ## Format C files
+  for file in src/search/methods/*; do
+    clang-format -i "$file"
+  done
+  clang-format -i src/search/main.*
+
+  for file in src/sorting/methods/*; do
+    clang-format -i "$file"
+  done
+  clang-format -i src/sorting/main.*
+
+  ## Format Python files
+  black data/graph_generator.py 2> /dev/null
+
+  ## Format Bash files
+  for file in bash/*; do
+    shfmt -w -i=2 -ln=bash -fn -ci -sr "$file"
+  done
+  shfmt -w -i=2 -ln=bash -fn -ci -sr run
+}

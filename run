@@ -2,11 +2,14 @@
 . bash/variables.sh
 . bash/compare_files.sh
 . bash/algorithm_translate.sh
+. bash/format.sh
 
 rm data/files/* 2> /dev/null
 
+format_files
+
 printf '%s\n' 'Compiling C program'
-gcc src/main.c -o main.out
+gcc src/sorting/main.c -o main.out
 
 printf '%s\n' 'Executing program'
 ./main.out
@@ -14,19 +17,19 @@ printf '%s\n' 'Executing program'
 check=$(compare)
 
 if [[ "$check" == '0' ]]; then
-    printf '%s\n' 'Generating comparisons and moves graphs'
-    cd data
-    python3 graph_generator.py
-    cd ..
+  printf '%s\n' 'Generating comparisons and moves graphs'
+  cd data
+  python3 graph_generator.py
+  cd ..
 else
-    IFS=' '
-    info=($check)
+  IFS=' '
+  info=($check)
 
-    month=${info[0]}
-    alg1=$(translate ${info[1]})
-    alg2=$(translate ${info[2]})
+  month=${info[0]}
+  alg1=$(translate ${info[1]})
+  alg2=$(translate ${info[2]})
 
-    printf '%s\n' "Month $month has divergences between algorithms $alg1 and $alg2"
+  printf '%s\n' "Month $month has divergences between algorithms $alg1 and $alg2"
 fi
 
 printf '%s\n' 'Done!'

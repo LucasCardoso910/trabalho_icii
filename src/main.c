@@ -14,7 +14,8 @@ int main() {
         &insert_binary_sort, 
         &insert_sort, 
         &selection_sort,
-        &heap_sort
+        &heap_sort,
+        &quick_sort
     };
 
     // clean_csv_files(); // How to clean files no matter os?
@@ -24,7 +25,7 @@ int main() {
         sprintf(input_file, "input/%s.txt", month);
         sprintf(output_file, "output/%s.txt", month);
 
-        for (int j = 0; j < 5; j++) {
+        for (int j = 0; j < 6; j++) {
             array = read_file(input_file, &size);
             sort(*sorting_functions[j], array, &size, month);
         }

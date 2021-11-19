@@ -26,18 +26,14 @@ char* heap_sort(char** array, int size) {
     int left;
     int right;
 
-    array = right_shift(array, &size);
-
-    for (left = size / 2; left > 0; left--) {
+    for (left = size / 2; left >= 0; left--) {
         heapify(array, left, size-1);
     }
 
-    for (right = size-1; right > 1; right--) {
-        swap(array[1], array[right]);
-        heapify(array, 1, right - 1);
+    for (right = size-1; right > 0; right--) {
+        swap(array[0], array[right]);
+        heapify(array, 0, right - 1);
     }
-
-    array = left_shift(array, &size);
 
     return "heap_sort";
 }

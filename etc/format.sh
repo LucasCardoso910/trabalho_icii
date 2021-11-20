@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function format_files()
 {
   ## Format C files
@@ -15,7 +17,7 @@ function format_files()
   black data/graph_generator.py 2> /dev/null
 
   ## Format Bash files
-  for file in bash/*; do
+  for file in etc/*.sh; do
     shfmt -w -i=2 -ln=bash -fn -ci -sr "$file"
   done
   shfmt -w -i=2 -ln=bash -fn -ci -sr run

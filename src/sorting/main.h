@@ -91,7 +91,7 @@ void write_output_file(char func_name[FUNC_NAME_SIZE],
     char filename[FILENAME_SIZE];
     FILE *file;
 
-    sprintf(filename, "output/%s-%s.txt", month, func_name);
+    sprintf(filename, "output/%s/%s.txt", month, func_name);
     file = fopen(filename, "w");
 
     for (int i = 0; i < size; i++) {

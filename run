@@ -1,11 +1,12 @@
 #!/bin/bash
-. bash/variables.sh
-. bash/compare_files.sh
-. bash/algorithm_translate.sh
-. bash/format.sh
 
-rm data/files/* 2> /dev/null
+. etc/compare_files.sh
+. etc/format.sh
 
+printf '%s\n' 'Removing old csv files'
+rm data/files/*.csv 2> /dev/null
+
+printf '%s\n' 'Formatting code files before compiling'
 format_files
 
 printf '%s\n' 'Compiling C program'
@@ -14,22 +15,30 @@ gcc src/sorting/main.c -o main.out
 printf '%s\n' 'Executing program'
 ./main.out
 
+printf '%s\n' 'Checking if new files are correctly sorted'
 check=$(compare)
 
 if [[ "$check" == '0' ]]; then
   printf '%s\n' 'Generating comparisons and moves graphs'
+
   cd data
   python3 graph_generator.py
   cd ..
+
+  printf '%s\n' 'Done!'
 else
-  IFS=' '
+  printf 'Execution aborted due to errors in sorting:'
+  ## Setting IFS to space and newline characters
+  IFS=' 
+  '
   info=($check)
+  for ((i = 0; i < ${#info[@]}; i += 2)); do
+    month=${info[$i]}
 
-  month=${info[0]}
-  alg1=$(translate ${info[1]})
-  alg2=$(translate ${info[2]})
+    IFS='/.'
+    alg_path=(${info[$(($i + 1))]})
+    alg=${alg_path[2]}
 
-  printf '%s\n' "Month $month has divergences between algorithms $alg1 and $alg2"
+    printf '%s\n' "$alg produced a non-sorted file in month $month"
+  done
 fi
-
-printf '%s\n' 'Done!'

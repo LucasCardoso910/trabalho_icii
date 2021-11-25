@@ -22,7 +22,7 @@ if [[ "$check" == '0' ]]; then
   printf '%s\n' 'Generating comparisons and moves graphs'
 
   cd data
-  python3 graph_generator.py
+  python3 data_generator.py
   cd ..
 
   printf '%s\n' 'Done!'

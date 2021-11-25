@@ -14,7 +14,7 @@ function format_files()
   clang-format -i src/sorting/main.*
 
   ## Format Python files
-  black data/graph_generator.py 2> /dev/null
+  black data/data_generator.py 2> /dev/null
 
   ## Format Bash files
   for file in etc/*.sh; do

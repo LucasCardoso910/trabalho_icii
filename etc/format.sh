@@ -3,6 +3,8 @@
 function format_files()
 {
   ## Format C files
+  clang-format -i "src/library.h"
+
   for file in src/search/methods/*; do
     clang-format -i "$file"
   done

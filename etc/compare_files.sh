@@ -8,7 +8,7 @@ function compare()
   for i in {1..5}; do
     month="mes_$i"
 
-    for file in "output/$month"/*; do
+    for file in "output/sorting/$month"/*; do
       sort -C "$file"
 
       if [[ $? -ne 0 ]]; then

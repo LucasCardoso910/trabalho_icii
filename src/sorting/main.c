@@ -23,12 +23,12 @@ int main() {
 
     // clean_csv_files(); // How to clean files no matter os?
 
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < FILES_QTT; i++) {
         sprintf(month, "mes_%d", i + 1);
         sprintf(input_file, "input/%s.txt", month);
         sprintf(output_file, "output/%s.txt", month);
 
-        for (int j = 0; j < 9; j++) {
+        for (int j = 0; j < METHD_FUNC_QTT; j++) {
             array = read_file(input_file, &size);
             sort(*sorting_functions[j], array, &size, month);
         }

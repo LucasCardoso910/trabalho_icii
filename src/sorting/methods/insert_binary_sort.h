@@ -6,7 +6,7 @@ char *insert_binary_sort(char **array, int size) {
     int j;
 
     for (int i = 1; i < size; i++) {
-        move(aux, array[i]); // strcpy?
+        move(aux, array[i]);
         left = 0;
         right = i;
 

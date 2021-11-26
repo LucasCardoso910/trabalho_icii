@@ -1,22 +1,13 @@
 #include "../library.h"
 #include "methods/bubble_sort.h"
 #include "methods/heap_sort.h"
+#include "methods/improved_bubble_sort.h"
 #include "methods/insert_binary_sort.h"
 #include "methods/insert_sort.h"
 #include "methods/merge_sort.h"
 #include "methods/quick_sort.h"
 #include "methods/selection_sort.h"
-
-void write_data_file(char func_name[FUNC_NAME_SIZE],
-                     char month[MONTH_STR_SIZE]) {
-    FILE *file;
-    char filename[FILENAME_SIZE];
-
-    sprintf(filename, "data/files/%s.csv", func_name);
-    file = fopen(filename, "a");
-    fprintf(file, "%s,%d,%d\n", month, count_compare, count_moves);
-    fclose(file);
-}
+#include "methods/shake_sort.h"
 
 void sort(char *sort(char **, int), char **array, int *size, char *month) {
     char function_name[FUNC_NAME_SIZE];

@@ -14,8 +14,10 @@ void sort(char *sort(char **, int), char **array, int *size, char *month) {
     char filename[FILENAME_SIZE];
 
     strcpy(function_name, sort(array, *size));
-    sprintf(filename, "output/sorting/%s/%s.txt", month, function_name);
 
+    sprintf(filename, "output/sorting/%s/%s.txt", month, function_name);
     write_output_file(filename, array, *size);
-    write_data_file(function_name, month);
+
+    sprintf(filename, "data/files/%s.csv", function_name);
+    write_data_file(filename, month);
 }

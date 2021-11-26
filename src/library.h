@@ -184,3 +184,21 @@ void write_output_file(char filename[FILENAME_SIZE], char **content, int size) {
 
     fclose(file);
 }
+
+char **copy_data(char **target, char **obj, int size) {
+    target = (char **)malloc(sizeof(char *) * size);
+    for (int i = 0; i < size; i++) {
+        target[i] = (char *)malloc(sizeof(char) * STRING_SIZE);
+        strcpy(target[i], obj[i]);
+    }
+
+    return target;
+}
+
+void write_data_file(char filename[FILENAME_SIZE], char month[MONTH_STR_SIZE]) {
+    FILE *file;
+
+    file = fopen(filename, "a");
+    fprintf(file, "%s,%d,%d\n", month, count_compare, count_moves);
+    fclose(file);
+}

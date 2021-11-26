@@ -1,0 +1,8 @@
+bubble_sort:28,12
+heap_sort:35,58
+insert_binary_sort:14,18
+insert_sort:11,25
+merge_sort:14,32
+quick_sort:24,23
+selection_sort:28,21
+shake_sort:13,12

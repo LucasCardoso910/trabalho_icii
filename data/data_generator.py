@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
-import numpy as np
+from scipy.stats import linregress
 import pandas as pd
-import six
 import os
 
 lines_in_file = {
@@ -30,42 +29,33 @@ def create_graph(x_axis, y_axis, model, name):
     plt.savefig("graphs/" + name + "-" + model + ".png", format="png", dpi=fig.dpi)
 
 
-def render_mpl_table(
-    data,
-    col_width=3.0,
-    row_height=0.625,
-    font_size=14,
-    header_color="#40466e",
-    row_colors=["#f1f1f2", "w"],
-    edge_color="w",
-    bbox=[0, 0, 1, 1],
-    header_columns=0,
-    ax=None,
-):
-    if ax is None:
-        size = (np.array(data.shape[::-1]) + np.array([0, 1])) * np.array(
-            [col_width, row_height]
-        )
-        _, ax = plt.subplots(figsize=size)
-        ax.axis("off")
+def render_mpl_table(data):
+    # #f1f1f2 is a light gray
+    row_colors = ["#f1f1f2", "w"]
+    _, ax = plt.subplots(figsize=(9, 3.75))
+    # (9, 3.75) was defined as the best size experimentally
+    ax.axis("off")  # We don't want the graph axis showing in the table
 
     mpl_table = ax.table(
         cellText=data.values,
-        bbox=bbox,
+        bbox=[0, 0, 1, 1],
         colLabels=data.columns,
         cellLoc="center",
     )
 
+    # Set a constant font size to the table
     mpl_table.auto_set_font_size(False)
-    mpl_table.set_fontsize(font_size)
+    mpl_table.set_fontsize(14)
 
-    for k, cell in six.iteritems(mpl_table._cells):
-        cell.set_edgecolor(edge_color)
-        if k[0] == 0 or k[1] < header_columns:
+    # Add colors to the table
+    for coord, cell in mpl_table._cells.items():
+        cell.set_edgecolor("w")
+        if coord[0] == 0 or coord[1] < 0:
             cell.set_text_props(weight="bold", color="w")
-            cell.set_facecolor(header_color)
+            cell.set_facecolor("#40466e")
+            # #40466e is a dark blue
         else:
-            cell.set_facecolor(row_colors[k[0] % len(row_colors)])
+            cell.set_facecolor(row_colors[coord[0] % len(row_colors)])
 
     return mpl_table
 
@@ -74,7 +64,7 @@ def create_table(csv_file):
     headers = ["Mês", "Comparações", "Movimentações"]
     csv_data = pd.read_csv(f"files/{csv_file}", names=headers)
 
-    ax = render_mpl_table(csv_data, header_columns=0)
+    ax = render_mpl_table(csv_data)
     ax.get_figure().savefig(f"tables/{csv_file.split('.')[0]}.png")
 
     plt.close("all")

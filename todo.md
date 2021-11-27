@@ -1,8 +1,3 @@
-## Perguntas para o Renato:
-* Quer o indice do array ou a linha onde ele aparece?
-* Os arquivos devem ser ordenados enquanto 
-* As funções de ordenação e busca precisam de comentários?
-
 ## TODO:
 * ~~Implementar heapsort~~
 * ~~Implementar quicksort~~

@@ -16,9 +16,7 @@ int binary_search(char **array, int size, char key[STRING_SIZE]) {
     }
 
     if (strcmp(array[right], key) == 0) {
-        printf("%d\n", right);
         return right;
     }
-    printf("%d\n", -1);
     return -1;
 }

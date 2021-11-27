@@ -26,17 +26,22 @@ int main() {
     do {
         show_menu();
 
+        // Mudar para scanf e ler como inteiro?
+        // Vantagens: comparação mais fácil,
+        //            não ter de lidar com \n,
+        //            0 a esquerda não importa
+
         fgets(option, STRING_SIZE, stdin);
         option[strcspn(option, "\n")] = 0;
-        printf("%s\n", option);
 
         if (strcmp(option, "01") == 0 || strcmp(option, "1") == 0) {
+            printf("Insert the search key: ");
             fgets(key, STRING_SIZE, stdin);
             clean_answer(key);
 
             found_codes = search_code(files_data, size, key, &results);
 
-            if (results != 0) {
+            if (results > 0) {
                 print_code(found_codes, results);
             }
         }

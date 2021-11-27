@@ -52,7 +52,7 @@ int binary_search(char **array, int size, char key[STRING_SIZE]);
 
 typedef struct found_code {
     int index;
-    char month[MONTH_STR_SIZE];
+    int month;
     char code[STRING_SIZE];
 } CODE;
 
@@ -71,9 +71,6 @@ char **right_shift(char **array, int *size) {
     for (int i = (*size - 2); i >= 0; i--) {
         strcpy(array[i + 1], array[i]);
     }
-
-    // Não preserva a ordem, move o primeiro elemento para o final
-    // strcpy(array[*size - 1], array[0]);
 
     return array;
 }

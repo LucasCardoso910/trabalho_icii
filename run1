@@ -1,0 +1,50 @@
+#!/bin/bash
+
+cd "$(dirname "$0")"
+
+. etc/compare_files.sh
+. etc/format.sh
+. etc/run_tests.sh
+
+declare -xgr BLUECOLOR='\033[1;34;49m%s\033[m'
+declare -xgr REDCOLOR='\033[1;31;49m%s\033[m'
+declare -xgr YELLOWCOLOR='\033[1;33;49m%s\033[m'
+declare -xgr GREENCOLOR='\033[1;32;49m%s\033[m'
+declare -xgr SEPARATOR='================================================================================'
+
+printf '%s\n' 'Removing old csv files...'
+rm data/files/*.csv 2> /dev/null
+
+printf '%s\n' 'Formatting code files before compiling...'
+format_files
+
+printf '%s\n' 'Compiling C program...'
+gcc src/sorting/main.c -o main.out
+
+printf '%s\n' 'Executing program...'
+./main.out
+
+# Descomentar a linha abaixo para simular uma ordenação errada
+# printf "Not\nSorted\nFile\n" > output/sorting/mes_1/bubble_sort.txt
+
+printf '%s\n' 'Performing tests...'
+check=$(perform_tests)
+printf '\n%s\n\n' "$check"
+
+printf '%s\n' 'Checking if new files are correctly sorted...'
+check=$(compare)
+
+if [[ "$check" == '0' ]]; then
+  printf '%s\n' 'Generating comparisons and moves graphs...'
+
+  cd data
+  python3 data_generator.py
+  cd ..
+
+  printf '%s\n' 'Done!'
+else
+  printf "\n$REDCOLOR\n" 'Error: Execution aborted due to errors in sorting:'
+  printf '%s\n' "$check"
+
+  exit 1
+fi

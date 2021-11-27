@@ -1,0 +1,4 @@
+#!/bin/bash
+
+gcc src/search/main.c -o main.out
+./main.out

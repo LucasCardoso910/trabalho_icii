@@ -19,9 +19,8 @@ function format_files()
   black data/data_generator.py 2> /dev/null
 
   ## Format Bash files
-  shfmt -w -i=2 -ln=bash -fn -ci -sr tests/run_tests.sh
   for file in etc/*.sh; do
     shfmt -w -i=2 -ln=bash -fn -ci -sr "$file"
   done
-  shfmt -w -i=2 -ln=bash -fn -ci -sr run
+  shfmt -w -i=2 -ln=bash -fn -ci -sr run1 run2
 }

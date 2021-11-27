@@ -21,7 +21,7 @@ def create_graph(x_axis, y_axis, model, name):
     plt.scatter(x_axis, y_axis, color="blue")
 
     plt.title(model.title() + " por arquivo - " + name)
-    plt.xlabel("Arquivo escolhido")
+    plt.xlabel("Número de linhas do arquivo")
     plt.ylabel("Número de " + model)
 
     plt.grid()
@@ -32,7 +32,7 @@ def create_graph(x_axis, y_axis, model, name):
 def render_mpl_table(data):
     # #f1f1f2 is a light gray
     row_colors = ["#f1f1f2", "w"]
-    _, ax = plt.subplots(figsize=(9, 3.75))
+    _, ax = plt.subplots(figsize=(10, 3.75))
     # (9, 3.75) was defined as the best size experimentally
     ax.axis("off")  # We don't want the graph axis showing in the table
 
@@ -61,7 +61,7 @@ def render_mpl_table(data):
 
 
 def create_table(csv_file):
-    headers = ["Mês", "Comparações", "Movimentações"]
+    headers = ["Mês", "Comparações", "Movimentações", "Tempo (em s)"]
     csv_data = pd.read_csv(f"files/{csv_file}", names=headers)
 
     ax = render_mpl_table(csv_data)
@@ -80,6 +80,7 @@ def main():
             arquivo = []
             comparacoes = []
             movimentos = []
+            tempos = []
 
             for line in f:
                 line = line.rstrip()
@@ -88,9 +89,11 @@ def main():
                 arquivo.append(lines_in_file[line[0]])
                 comparacoes.append(int(line[1]))
                 movimentos.append(int(line[2]))
+                tempos.append(float(line[3]))
 
         create_graph(arquivo, comparacoes, "comparações", name)
         create_graph(arquivo, movimentos, "movimentos", name)
+        create_graph(arquivo, tempos, "segundos", name)
         create_table(nome_do_arquivo)
 
 

@@ -13,7 +13,9 @@ void sort(char *sort(char **, int), char **array, int *size, char *month) {
     char function_name[FUNC_NAME_SIZE];
     char filename[FILENAME_SIZE];
 
+    start = clock();
     strcpy(function_name, sort(array, *size));
+    end = clock();
 
     sprintf(filename, "output/sorting/%s/%s.txt", month, function_name);
     write_output_file(filename, array, *size);

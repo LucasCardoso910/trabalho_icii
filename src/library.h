@@ -55,9 +55,8 @@ int binary_search(char **array, int size, char key[STRING_SIZE]);
 // Structure for searching a desired code in the files with all relevant info
 // to be printed to the user.
 typedef struct found_code {
-    int index;
-    int month;
-    char code[STRING_SIZE];
+    int initial_index;
+    int final_index;
 } CODE;
 
 int count_compare = 0; // Count number of comparisons made

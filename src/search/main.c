@@ -26,7 +26,7 @@ int main() {
             clean_answer(key);
 
             found_codes = search_code(files_data, size, key, &results);
-            print_code(found_codes, results);
+            print_code(key, found_codes);
         }
     } while (option != EXIT);
 

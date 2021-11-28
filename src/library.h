@@ -9,6 +9,7 @@
 
 #define STRING_SIZE 12
 #define FILENAME_SIZE 100
+#define CSV_LINE 75
 #define MONTH_STR_SIZE 6
 #define FUNC_NAME_SIZE 25
 

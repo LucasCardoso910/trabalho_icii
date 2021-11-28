@@ -12,9 +12,6 @@ declare -xgr YELLOWCOLOR='\033[1;33;49m%s\033[m'
 declare -xgr GREENCOLOR='\033[1;32;49m%s\033[m'
 declare -xgr SEPARATOR='================================================================================'
 
-printf '%s\n' 'Removing old csv files...'
-rm data/files/*.csv 2> /dev/null
-
 printf '%s\n' 'Formatting code files before compiling...'
 format_files
 

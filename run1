@@ -34,9 +34,16 @@ fi
 # Descomentar a linha abaixo para simular uma ordenação errada
 # printf "Not\nSorted\nFile\n" > output/sorting/mes_1/bubble_sort.txt
 
-printf '%s\n' 'Performing tests...'
-check=$(perform_tests)
-printf '\n%s\n\n' "$check"
+read -r -p "Would you like to perform tests? [y/N] " response
+if [[ "$?" -ne 0 || -z "$response" ]]; then
+  response='no'
+fi
+
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
+  printf '%s\n' 'Performing tests...'
+  check=$(perform_tests)
+  printf '\n%s\n\n' "$check"
+fi
 
 printf '%s\n' 'Checking if new files are correctly sorted...'
 check=$(compare)

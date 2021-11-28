@@ -16,10 +16,20 @@ printf '%s\n' 'Formatting code files before compiling...'
 format_files
 
 printf '%s\n' 'Compiling C program...'
-gcc src/sorting/main.c -o main.out
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  gcc src/sorting/main.c -o main.out
 
-printf '%s\n' 'Executing program...'
-./main.out
+  printf '%s\n' 'Executing program...'
+  ./main.out
+elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
+  x86_64-w64-mingw32-gcc -o main64_sort.exe src/sorting/main.c
+
+  printf '%s\n' 'Executing program...'
+  ./main.exe
+else
+  printf 'OS not recognized!\n'
+  exit 1
+fi
 
 # Descomentar a linha abaixo para simular uma ordenação errada
 # printf "Not\nSorted\nFile\n" > output/sorting/mes_1/bubble_sort.txt

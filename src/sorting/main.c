@@ -21,8 +21,6 @@ int main() {
         &merge_sort,
     };
 
-    // clean_csv_files(); // How to clean files no matter os?
-
     for (int i = 0; i < FILES_QTT; i++) {
         sprintf(month, "mes_%d", i + 1);
         sprintf(input_file, "input/%s.txt", month);

@@ -10,7 +10,7 @@ público após a data máxima de entrega do trabalho.
 
 ## Enunciado:
 Os arquivos “mes_i.txt”(sendo i=1,...5) anexos contém códigos de
-operação de transações realizadas por uma empresaobtidos em 5
+operação de transações realizadas por uma empresa obtidos em 5
 meses diferentes. Cada código de operação contém 10 letras.
 Deseja-se um aplicativo que verifique se um determinado código de
 operação (com 10 letras) digitado pelo usuário está presente  em 
@@ -19,11 +19,11 @@ esta operação foi realizada e, em caso afirmativo, em que mês.
 Pede-se:
 
 - Para acelerar o processo de busca, um algoritmo de busca 
-binária deveráser utilizado.  Para  isso,  o  conjunto  de  dados 
-de  cada  arquivo seráordenado.  No  entanto,  deseja-se 
+binária deverá ser utilizado.  Para  isso,  o  conjunto  de  dados 
+de  cada  arquivo será ordenado.  No  entanto,  deseja-se 
 primeiro  determinar  qual  algoritmo  de ordenação   é   mais  
-rápido   para   este   problemaatravés   da   análise
-experimental  do  número  de  comparaçãoentre  chaves  e 
+rápido   para   este   problema através   da   análise
+experimental  do  número  de  comparação entre  chaves  e 
 movimentações de registros. Sejam os seguintes algoritmos de
 ordenação: 
   - Inserção direta;
@@ -35,8 +35,8 @@ ordenação:
   - Quicksort.
 - Pede-se:
   - a) Implemente os algoritmos relacionados. 
-  - b) Obtenha   osnúmeros   de   comparações   entre chaves   e 
-  de   movimentações   realizadaspara cada  arquivo  (cada 
+  - b) Obtenha   os números   de   comparações   entre chaves   e 
+  de   movimentações   realizadas para cada  arquivo  (cada 
   arquivo  tem  um  tamanho diferente).
   - c) Gere dois gráficos, um com número comparações  entre
   chaves  e  outro  com  número de  movimentações  realizadas  
@@ -46,7 +46,7 @@ ordenação:
   obtidos,   comentando   se   os   resultados   são condizentes  
   com  a  análise  assintótica  de  cada algoritmo.
   - e) Baseado  nos  resultados  obtidos,  comente  qual (ou 
-  quais) algoritmo(s)de ordenação é (são)mais apropriado(s)para 
+  quais) algoritmo(s)de ordenação é (são) mais apropriado(s) para 
   este problema.
 
 - Implemente o   aplicativo   pedido   utilizando   busca
@@ -207,3 +207,16 @@ execução do trabalho como um todo:
 - Os arquivos C compilados devem ser executados dentro da pasta 
   principal do trabalho.
 - O arquivo run_tests.sh deve ser executado dentro da pasta tests. 
+
+Para sua conveniência, os comandos usados para compilar os arquivos
+durante o trabalho foram:
+
+- Para o programa da questão 1: `gcc src/sorting/main.c -o main.out`
+- Para o programa da questão 2: `gcc src/search/main.c -o main.out`.
+
+Com as devidas alterações aplicáveis, como a extensão do arquivo
+compilado. 
+
+Por garantia, os arquivos .c foram compilados no formato do Windows
+também e estão disponíveis na extensão .exe dentro da pasta principal
+do trabalho, onde devem ser rodados.

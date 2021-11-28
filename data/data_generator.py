@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-from scipy.stats import linregress
 import pandas as pd
 import os
 

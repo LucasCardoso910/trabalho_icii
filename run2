@@ -1,4 +1,8 @@
 #!/bin/bash
 
+. etc/format.sh
+
+format_files
+
 gcc src/search/main.c -o main.out
 ./main.out

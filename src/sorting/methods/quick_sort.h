@@ -6,7 +6,6 @@ char **quicksort(char **array, int left, int right) {
     move(x, array[(left + right) / 2]);
 
     do {
-
         while (compare(array[i], x) < 0) {
             i = i + 1;
         }
@@ -20,7 +19,6 @@ char **quicksort(char **array, int left, int right) {
             i++;
             j--;
         }
-
     } while (i <= j);
 
     if (left < j) {

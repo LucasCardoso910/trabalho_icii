@@ -129,6 +129,22 @@ function get_expected_results()
   unset IFS
 }
 
+function print_warning()
+{
+  local variable="$1"
+  local func_name="$2"
+  local file="$3"
+  local value="$4"
+  local expected="$5"
+
+  printf "\n$YELLOWCOLOR\n" "Warning: Wrong $variable number!"
+  printf "$BLUECOLOR" "$func_name"
+  printf '%s' " produced wrong number of $variable in "
+  printf "$BLUECOLOR\n" "$file"
+  printf '%s\n\n' "Produced $value, but expected $expected"
+  errors_by_function["$func_name"]=$((${errors_by_function["$func_name"]} + 1))
+}
+
 function data_tests()
 {
   printf "$BLUECOLOR\n" 'Running test [data_tests]'
@@ -158,21 +174,11 @@ function data_tests()
 
       # Compare these values with the expected values
       if [[ "$comparisons" != "$expected_comparisons" ]]; then
-        printf "\n$YELLOWCOLOR\n" "Warning: Wrong comparisons number!"
-        printf "$BLUECOLOR" "$func_name"
-        printf '%s' " produced wrong number of comparisons in "
-        printf "$BLUECOLOR\n" "$file"
-        printf '%s\n\n' "Produced $comparisons, but expected $expected_comparisons"
-        errors_by_function["$func_name"]=$((${errors_by_function["$func_name"]} + 1))
+        print_warning "comparisons" "$func_name" "$file" "$comparisons" "$expected_comparisons"
       fi
 
       if [[ "$moves" != "$expected_moves" ]]; then
-        printf "\n$YELLOWCOLOR\n" "Warning: Wrong movimentations number!"
-        printf "$BLUECOLOR" "$func_name"
-        printf '%s' " produced wrong number of moves in "
-        printf "$BLUECOLOR\n" "$file"
-        printf '%s\n\n' "Produced $moves, but expected $expected_moves"
-        errors_by_function["$func_name"]=$((${errors_by_function["$func_name"]} + 1))
+        print_warning "movimentations" "$func_name" "$file" "$moves" "$expected_moves"
       fi
 
       rm $data_file

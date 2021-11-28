@@ -24,8 +24,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
   ./main.out
 elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
   gcc -o main64_sort.exe src/sorting/main.c 2> /dev/null ||
-
-  printf '%s\n' 'Executing program...'
+    printf '%s\n' 'Executing program...'
   ./main.exe
 else
   printf 'OS not recognized!\n'

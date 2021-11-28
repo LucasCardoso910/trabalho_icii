@@ -48,24 +48,22 @@ CODE *expand_codes(CODE *array, int *size) {
 
 // Binary search returns only the most left index of a found code
 // This function iterates over the right of this index searching for
-// more occurences (they will be consecutive)
+// more occurrences (they will be consecutive)
 void search_doubles(char **array, int start, int end, CODE *codes, int *size) {
     int file;
-    int index = start;
+    int index = start + 1;
 
-    if (index == -1) {
-        return;
-    }
-
+    printf("%s\n", array[start]);
     file = codes[*size - 1].month;
     while (index < end && strcmp(array[start], array[index]) == 0) {
-        index++;
+        printf("%s\n", array[index]);
         codes = expand_codes(codes, size);
-        codes[*size - 1] = create_code(array[start], index, file);
+        create_code(&codes[*size - 1], array[start], index + 1, file);
+        index++;
     }
 }
 
-// Search for a given code in all ordered files for all its occurences
+// Search for a given code in all ordered files for all its occurrences
 CODE *search_code(char ***data, int size[], char key[], int *results) {
     CODE *found_codes;
     CODE new_code;

@@ -6,26 +6,17 @@ int main() {
     char key[STRING_SIZE]; // The key the user is searching in the files
     char ***files_data;    // 3D matrix with all strings in all files
     int size[FILES_QTT];   // Array of the file sizes
-    int results;           // Number of found codes
 
-    files_data = get_data(files_data, size);
+    files_data = get_data(size);
     presentation();
 
     do {
-        show_menu();
-
-        scanf("%d", &option);
-
-        // Make sure that does not have trash in the buffer
-        fflush(stdin);
-        setbuf(stdin, NULL);
+        option = menu();
 
         if (option == SEARCH) {
-            printf("Insert the search key: ");
-            fgets(key, STRING_SIZE, stdin);
-            clean_answer(key);
+            strcpy(key, get_key());
 
-            found_codes = search_code(files_data, size, key, &results);
+            found_codes = search_code(files_data, size, key);
             print_code(key, found_codes);
         }
     } while (option != EXIT);

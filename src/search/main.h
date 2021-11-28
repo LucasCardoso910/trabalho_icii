@@ -8,19 +8,38 @@
 #define NOT_FOUND -1
 
 // Functions prototypes
-void show_menu();
+int menu();
 void presentation();
-int search_doubles(char** data, int start, int end);
-CODE *search_code(char ***data, int size[], char key[], int *results);
-void print_code(char key[], CODE found_codes[]);
-char ***get_data(char ***files_data, int size[FILES_QTT]);
+int search_doubles(char **data, int start, int end);
+CODE *search_code(char ***data, int size[], char key[]);
+void print_code(char key[], CODE *found_codes);
+char ***get_data(int size[FILES_QTT]);
 
-void show_menu() {
+int menu() {
+    int option;
+
     printf("\n-------------MENU------------\n");
     printf("What do you want to do now?\n");
     printf("01) Search for a code.\n");
     printf("02) Close the program.\n");
     printf("Insert your option: ");
+
+    scanf("%d", &option);
+    cleanbuf();
+
+    return option;
+}
+
+char *get_key() {
+    char *key;
+
+    printf("Insert the search key: ");
+    key = (char *)malloc(sizeof(char) * STRING_SIZE);
+    fgets(key, STRING_SIZE, stdin);
+
+    clean_answer(key);
+
+    return key;
 }
 
 void presentation() {
@@ -28,13 +47,14 @@ void presentation() {
 }
 
 // Binary search returns only the most left index as result
-// This function loops through the values to the right and check if they are the same
-int search_doubles(char** data, int start, int end) {
+// This function loops through the values in the right,
+// checking if they are the same
+int search_doubles(char **data, int start, int end) {
     int index = start + 1;
 
     if (start == NOT_FOUND) {
         return start; // Initial and final points to the same index
-    } 
+    }
 
     while (index < end && strcmp(data[index], data[start]) == 0) {
         index++;
@@ -44,25 +64,24 @@ int search_doubles(char** data, int start, int end) {
 }
 
 // Search for a given code in all ordered files for all its occurrences
-CODE *search_code(char ***data, int size[], char key[], int *results) {
+CODE *search_code(char ***data, int size[], char key[]) {
     CODE *found_codes;
     int index;
-    int repeated;
 
-    found_codes = (CODE*) malloc(sizeof(CODE) * FILES_QTT);
+    found_codes = (CODE *)malloc(sizeof(CODE) * FILES_QTT);
 
     for (int file = 0; file < FILES_QTT; file++) {
-        repeated = 0;
         index = binary_search(data[file], size[file], key);
         found_codes[file].initial_index = index;
-        found_codes[file].final_index = search_doubles(data[file], index, size[file]);
+        found_codes[file].final_index =
+            search_doubles(data[file], index, size[file]);
     }
 
     return found_codes;
 }
 
 // Print all occurrences of code correctly formatted
-void print_code(char key[], CODE found_codes[]) {
+void print_code(char key[], CODE *found_codes) {
     // To know if the current code and the previous monthes are different
     int month_counter = 0;
     int total_counter = 0;
@@ -82,9 +101,10 @@ void print_code(char key[], CODE found_codes[]) {
     printf("\nThe key \"%s\" appears on:\n", key);
     for (int month = 0; month < FILES_QTT; month++) {
         printf("\nIn file mes_%d:\n", month + 1);
-        
+
         month_counter = 0;
-        for (int line = found_codes[month].initial_index; line < found_codes[month].final_index; line++) {
+        for (int line = found_codes[month].initial_index;
+             line < found_codes[month].final_index; line++) {
             printf("- Line #%d\n", line + 1);
             month_counter++;
             total_counter++;
@@ -100,7 +120,8 @@ void print_code(char key[], CODE found_codes[]) {
 }
 
 // Reads all files info and sort it into a 3D array
-char ***get_data(char ***files_data, int size[FILES_QTT]) {
+char ***get_data(int size[FILES_QTT]) {
+    char ***files_data;
     char month[MONTH_STR_SIZE];
     char input_file[FILENAME_SIZE];
     char output_file[FILENAME_MAX];

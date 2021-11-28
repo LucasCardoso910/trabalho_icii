@@ -26,7 +26,7 @@ void print(char **array, int size);
 void print_subarray(char **array, int left, int right);
 char **resize_array(char **array, int *size, int new_size);
 FILE *open_file(char *filename, char *open_mode);
-char **start_array(char **array, int *size);
+char **start_array(int *size);
 void zero_counters();
 char **expand_array(char **array, int *size);
 char **read_file(char *filename, int *size);
@@ -164,7 +164,9 @@ FILE *open_file(char *filename, char *open_mode) {
 // it is 3. The parameter size is a pointer only to retreave this new value,
 // since while returning the pointer to the new array, it was not possible to
 // receive this value.
-char **start_array(char **array, int *size) {
+char **start_array(int *size) {
+    char **array;
+
     (*size) = 3;
 
     array = (char **)malloc(sizeof(char *) * (*size));
@@ -201,7 +203,7 @@ char **read_file(char *filename, int *size) {
     zero_counters();
 
     file = open_file(filename, "r");
-    array = start_array(array, size);
+    array = start_array(size);
 
     while (fscanf(file, "%s\n", string) > 0) {
         if (count == (*size)) {
@@ -260,6 +262,12 @@ void write_data_file(char filename[FILENAME_SIZE], char month[MONTH_STR_SIZE]) {
     fclose(file);
 }
 
+// To avoid problems
+void cleanbuf() {
+    fflush(stdin);
+    setbuf(stdin, NULL);
+}
+
 // Deals with the answer of a user, removing the \n if it exists and transform
 // it in uppercase, to avoid mistakes made by the user.
 void clean_answer(char answer[STRING_SIZE]) {
@@ -268,4 +276,6 @@ void clean_answer(char answer[STRING_SIZE]) {
     for (int i = 0; i < STRING_SIZE; i++) {
         answer[i] = toupper(answer[i]);
     }
+
+    cleanbuf();
 }

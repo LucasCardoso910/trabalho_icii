@@ -4,5 +4,5 @@
 
 format_files
 
-gcc src/search/main.c -o main.out
+gcc -W -Wall -Wextra -pedantic src/search/main.c -o main.out
 ./main.out

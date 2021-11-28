@@ -2,7 +2,6 @@ int binary_search(char **array, int size, char key[STRING_SIZE]) {
     int left = 0;
     int right = size - 1;
     int medium;
-    int result = -1;
 
     while (left < right) {
         medium = (right + left) / 2;

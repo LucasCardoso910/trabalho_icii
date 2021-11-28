@@ -17,7 +17,8 @@ format_files
 
 printf '%s\n' 'Compiling C program...'
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  gcc src/sorting/main.c -o main.out
+  gcc -W -Wall -Wextra -pedantic src/sorting/main.c -o main.out
+  # Using all kinds of warnings to avoid logical errors
 
   printf '%s\n' 'Executing program...'
   ./main.out

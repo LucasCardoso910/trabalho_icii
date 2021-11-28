@@ -2,7 +2,6 @@
 
 int main() {
     int size;
-    FILE *file;
     char **array;
     char input_file[FILENAME_SIZE];
     char output_file[FILENAME_SIZE];
@@ -30,6 +29,8 @@ int main() {
             array = read_file(input_file, &size);
             sort(*sorting_functions[j], array, &size, month);
         }
+
+        printf("Sorted %s file with all sorting methodes!\n", month);
     }
 
     return 0;

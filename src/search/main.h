@@ -17,15 +17,20 @@ char ***get_data(int size[FILES_QTT]);
 
 int menu() {
     int option;
+    char read[STRING_SIZE];
 
     printf("\n-------------MENU------------\n");
     printf("What do you want to do now?\n");
-    printf("01) Search for a code.\n");
-    printf("02) Close the program.\n");
-    printf("Insert your option: ");
+    printf("1) Search for a code.\n");
+    printf("2) Close the program.\n");
 
-    scanf("%d", &option);
-    cleanbuf();
+    do {
+        printf("Insert your option (Number between 1 and 2): ");
+        fscanf(stdin, "%s", read);
+        cleanbuf();
+    } while (read[0] < 49 || read[0] > 50);
+
+    option = read[0] - 48;
 
     return option;
 }

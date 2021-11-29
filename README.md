@@ -55,7 +55,7 @@ ordenação:
   salve  os  dados  ordenados  em  novos  arquivos.  O aplicativo
   deve, portanto, carregar os arquivos ordenados e localizar (caso
   esteja  presente) o  código digitado. Caso  esteja  presente,
-  deve  também indicarem qual mês o código foi encontradoe em que
+  deve  também indicarem qual mês o código foi encontrado e em que
   posição do arquivo (índice do vetor) ele se encontra.
 
 Observações:
@@ -199,7 +199,9 @@ scripts criados aqui para executar o trabalho, porém eles
 facilitam e muito essa parte do trabalho, uma vez que há pastas 
 específicas em que se deve estar para a correta execução dos 
 arquivos, coisa que o script lida. Portanto, se possível, nossa 
-posição é de incentivar o seu uso.
+posição é de incentivar o seu uso, que foi testado e, com as devidas
+instalações de formatadores e bibliotecas de Python, é completamente
+rodável no Windows Subsystem for Linux (WSL), por exemplo.
 
 Porém, se por qualquer motivo, não for possível o uso de um script 
 em Bash, aqui estão algumas informações necessárias para a 
@@ -220,3 +222,15 @@ compilado.
 Por garantia, os arquivos .c foram compilados no formato do Windows
 também e estão disponíveis na extensão .exe dentro da pasta principal
 do trabalho, onde devem ser rodados.
+
+### Dependências:
+Alguns programas/bibliotecas que são utilizados ao executar o script
+em Bash e que precisam estar instalados para sua correta execução são:
+
+- gcc
+- clang-format
+- black
+- shfmt
+- Python
+- matplotlib
+- pandas

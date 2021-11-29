@@ -4,5 +4,7 @@
 
 format_files
 
-gcc -W -Wall -Wextra -pedantic src/search/main.c -o main.out
-./main.out
+gcc -W -Wall -Wextra -pedantic src/search/main.c -o main_search.out
+# Using all kinds of warnings to avoid logical errors
+
+./main_search.out

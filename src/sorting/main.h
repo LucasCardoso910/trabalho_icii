@@ -19,6 +19,10 @@ int count_lines_in_file(char filename[FILENAME_SIZE]) {
     char line[CSV_LINE];
     int lines = 0;
 
+    if (file == NULL) {
+        return 0;
+    }
+
     while (fgets(line, sizeof(line), file)) {
         lines++;
     }

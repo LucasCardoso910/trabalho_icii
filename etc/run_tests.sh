@@ -198,7 +198,8 @@ function perform_tests()
   mkdir .temp
   mkdir .temp/data
 
-  gcc main.c -o main.out
+  gcc -W -Wall -Wextra -pedantic main.c -o main.out
+  # Using all kinds of warnings to avoid logical errors
 
   order_tests
   data_tests
